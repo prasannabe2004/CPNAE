@@ -2,11 +2,11 @@ import nmap
 
 nm = nmap.PortScanner()
 
-subnet = "23.216.155.42/30"
+subnet = "www.google.com"
 ports="1-10"
 
+
 nm.scan(hosts=subnet,arguments=f'p {ports}')
-print("Hello")
 for host in nm.all_hosts():
     print(f'Scanning {host}')
     for proto in nm[host].all_protocols():
