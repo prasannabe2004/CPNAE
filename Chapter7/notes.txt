@@ -2,6 +2,7 @@ sudo apt-get install python3-venv
 sudo apt install python3-selenium
 
 python3 -m venv myenv
-pip install webdriver-manager
 source myenv/bin/activate
+pip install webdriver-manager
+pip install selenium
 python3 ./Chapter7/automation.py
