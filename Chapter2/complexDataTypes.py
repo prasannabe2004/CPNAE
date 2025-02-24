@@ -84,6 +84,6 @@ for i in listforsize:
     result = i * 3
 '''
 
-print("list perf is {}".format(round(timeit.timeit(stmt=listtime,number=1000000),2)))
+print("list perf is  {}".format(round(timeit.timeit(stmt=listtime ,number=1000000),2)))
 print("tuple perf is {}".format(round(timeit.timeit(stmt=tupletime,number=1000000),2)))
-print("set perf is {}".format(round(timeit.timeit(stmt=settime,number=1000000),2)))
+print("set perf is   {}".format(round(timeit.timeit(stmt=settime  ,number=1000000),2)))
