@@ -1,0 +1,27 @@
+CH2
+	pprint
+	os
+	tabulate
+	pandas
+	sys
+	timeit
+	csv
+CH4
+	nmap
+
+CH7
+	selenium
+	webdriver_manage.chrome
+
+CH8  
+	netmiko
+	psutil
+	time
+
+CH9 - Monitoring Network
+	prettytable
+	psutil
+	scapy
+	time
+	os
+
