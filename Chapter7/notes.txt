@@ -5,4 +5,9 @@ python3 -m venv myenv
 source myenv/bin/activate
 pip install webdriver-manager
 pip install selenium
-python3 ./Chapter7/automation.py
+
+#To Open Chrome browser
+python3 ./automation.py
+
+#To Open Firefox browser
+python3 ./automation_firefox.py
