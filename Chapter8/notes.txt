@@ -1,0 +1,2 @@
+sudo apt install python3-netmiko
+sudo apt install python3-psutil

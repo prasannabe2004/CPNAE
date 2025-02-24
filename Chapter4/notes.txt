@@ -1,0 +1,2 @@
+sudo apt-get install nmap
+sudo apt install python3-nmap
