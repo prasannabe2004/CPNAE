@@ -1,0 +1,16 @@
+
+<SecurityPolicies>
+    <Authentication>
+        <AllowedTypes>
+            <Type>WPA-Personal</Type>
+            <Type>WPA3</Type>
+        </AllowedTypes>
+    </Authentication>
+    <IBSSNetworks>
+        <Allowed>False</Allowed>
+    </IBSSNetworks>
+    <ValidSSIDs>
+        <SSID>HomeNetwork</SSID>
+        <SSID>Guest</SSID>
+    </ValidSSIDs>
+</SecurityPolicies>

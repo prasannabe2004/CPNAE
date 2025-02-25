@@ -14,8 +14,8 @@ security_policies_xml = """
         <Allowed>False</Allowed>
     </IBSSNetworks>
     <ValidSSIDs>
-        <SSID>HomeNetwrok</SSID>
-        <SSID>OfficeNetwork</SSID>
+        <SSID>HomeNetwork</SSID>
+        <SSID>Guest</SSID>
     </ValidSSIDs>
 </SecurityPolicies>
 """
@@ -30,31 +30,28 @@ def read_security_policies(file_path):
     policies = {
         "authentication": [auth.text for auth in root.find(".//Authentication/AllowedTypes")],
         "ibss_allowed": root.find(".//IBSSNetworks/Allowed").text.lower() == 'true',
-        "valid_ssids" : [ssid.text for ssid in root.find(".//ValidSSIDs/SSID")]
+        "valid_ssids" : [ssid.text for ssid in root.find(".//ValidSSIDs")]
     }
     return policies
 
 def scan_networks(policies):
     print("Starting scan for wireless networks...")
-    result = subprocess.run(['sudo', 'iwlist', 'wlan0', 'scan'], capture_output=True, text=True)    networks= result.stdout.split("\n\n")
-    for n in networks:
-        ssid_match = re.search(r"SSID \d+ : (.+)", n)
-        if ssid_match:
-            ssid = ssid_match.group(1).strip()
-            bssid_match = re.search(r"BSSID \d+ : (.+)", n)
-            bssid = bssid_match.group(1).strip() if bssid_match else "Unknown"
-            auth_match = re.search(r"Authenication : (.+)", n)
-            auth_type = auth_match.group(1).strip() if auth_match else "Unknown"
-            network_type_match = re.search(r"network type : (.+)", n)
-            network_type = network_type_match.group().strip() if network_type_match else "Unknown"
+    ssid=''
+    network_type=''
+    auth_type=''
+    bssid=''
+    result = subprocess.run(['sudo', 'iwlist', 'wlp0s20f3', 'scan'], capture_output=True, text=True)
+    networks= result.stdout
+    ssids = list(filter(None,re.findall(r'ESSID:"(.*?)"', networks)))
 
+    print(ssids)
+    print(policies)
+    for ssid in ssids:
         # Check SSID Validity
         if ssid not in policies['valid_ssids']:
-            print("Voilation")
-        if network_type == "Ad hoc" and not policies['ibss_allowed']:
-            print("Voilation")
-        if auth_type not in policies['authentication']:
-            print("Voilation")
+            print(f'Voilation: SSID {ssid} is not allowed. Detected BSSID {bssid}')
+        else:
+            print(f'Voilation: SSID {ssid} is ALLOWED. Detected BSSID {bssid}')
 
 def main():
     policies = read_security_policies("security_policies.xml")
