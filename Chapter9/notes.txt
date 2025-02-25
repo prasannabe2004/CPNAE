@@ -1,1 +1,2 @@
 sudo apt install python3-scapy
+sudo apt install python3-prettytable
