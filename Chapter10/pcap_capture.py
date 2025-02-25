@@ -13,7 +13,7 @@ def capture_pcap(iface, dur, file):
 
 
 if __name__ == "__main__":
-    interface = "eno1"
+    interface = "cscotun0"
     duration = 60
     output_file = "captured_traffic.pcap"
     capture_pcap(interface, duration, output_file)
