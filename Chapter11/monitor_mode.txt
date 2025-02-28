@@ -1,0 +1,27 @@
+#create a monitor interface
+sudo iw phy phy0 interface add mon0 type monitor
+
+#Delete current managed interface
+sudo iw dev wlp3s0 del
+
+#RF-kill is not blocked
+rfkill list all
+sudo rfkill unblock all
+
+rfkill list all
+
+#Set monitor mode
+sudo ip link set mon0 up
+
+#Check it is in monitor mode
+iw dev
+
+#Set freq to monitor
+sudo iw dev mon0 set freq 2437
+
+#Start wireshark
+sudo wireshark
+
+#Reset to managed mode
+sudo iw dev mon0 del
+sudo iw phy phy0 interface add wlp3s0 type managed

@@ -10,7 +10,7 @@
         <Allowed>False</Allowed>
     </IBSSNetworks>
     <ValidSSIDs>
-        <SSID>HomeNetwork</SSID>
+        <SSID>Mobile</SSID>
         <SSID>Guest</SSID>
     </ValidSSIDs>
 </SecurityPolicies>
