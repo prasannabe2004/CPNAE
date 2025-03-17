@@ -1,3 +1,4 @@
+import sys
 from scapy.all import rdpcap, Dot11
 
 def analyze_pcap(pcap_file):
@@ -14,6 +15,9 @@ def analyze_pcap(pcap_file):
     else:
         print("No WiFi packets found in the pcap file.")
 
-# Example usage
-pcap_file = "capture.pcap"  # Change this to your actual pcap file
-analyze_pcap(pcap_file)
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Need input file path")
+        exit()
+    pcap_file = sys.argv[1]  # Change this to your actual pcap file
+    analyze_pcap(pcap_file)
