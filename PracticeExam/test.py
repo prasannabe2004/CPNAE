@@ -6,5 +6,5 @@ def process_temperatures(temps, baseline=98.6):
         labels.append(f'Temperature {i+1}')
     return list(zip(labels, temps, variances))
 
-
-print(process_temperatures([99, 101, 103, 97.5, 69]))
+if __name__  == "__main__":
+    print(process_temperatures([99, 101, 103, 97.5, 69]))
